@@ -1,22 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-class FirstComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: '' };
-    this.handleChange = this.handleChange.bind(this);
+function FirstHookComponent() {
+  const [name, setName] = useState('');
+  function handleChange(evt) {
+    setName(evt.target.value);
   }
-  handleChange(evt) {
-    this.setState({ name: evt.target.value });
-  }
-  render() {
-    const { name } = this.state;
-    return (
-      <div>
-        <h1>My name is: {name}</h1>
-        <input type='text' value={name} onChange={this.handleChange} />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1>My name is: {name}</h1>
+      <input type='text' value={name} onChange={handleChange} />
+    </div>
+  );
 }
-export default FirstComponent;
+
+export default FirstHookComponent;
